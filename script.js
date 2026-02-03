@@ -1,47 +1,56 @@
-const heroBtn = document.querySelector(".hero-btn");
-const quizSec = document.querySelector(".quiz-container");
-
-heroBtn.onclick = () => {
-  quizSec.classList.remove("hidden");
-};
-
-const quiz = [
+const quizData = [
   {
-    question: "Miden ka main focus kya hai?",
-    options: ["Privacy", "NFT", "Gaming", "Ads"],
-    answer: 0
+    q: "Miden ka main focus kya hai?",
+    o: ["Gaming", "Privacy & Scalability", "NFTs", "Ads"],
+    a: 1
   },
   {
-    question: "Miden kaha se spin-out hua?",
-    options: ["Polygon", "Solana", "Cardano", "Avalanche"],
-    answer: 0
+    q: "Miden kis ecosystem se spin-out hua?",
+    o: ["Ethereum", "Polygon", "Solana", "Avalanche"],
+    a: 1
+  },
+  {
+    q: "Miden me execution kahan hoti hai?",
+    o: ["On-chain", "Client-side", "Validator", "Server"],
+    a: 1
   }
 ];
 
-let current = 0;
+let index = 0;
 let score = 0;
 
+function startQuiz() {
+  document.getElementById("quiz").classList.remove("hidden");
+  loadQ();
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
 function loadQ() {
-  document.getElementById("question").innerText = quiz[current].question;
-  const opts = quiz[current].options;
-  const container = document.getElementById("options");
-  container.innerHTML = "";
-  opts.forEach((o, i) => {
-    const div = document.createElement("div");
-    div.classList.add("option");
-    div.innerText = o;
-    div.onclick = () => {
-      if (i === quiz[current].answer) score++;
+  const q = quizData[index];
+  document.getElementById("question").innerText = q.q;
+  const optDiv = document.getElementById("options");
+  optDiv.innerHTML = "";
+
+  q.o.forEach((opt, i) => {
+    const d = document.createElement("div");
+    d.className = "option";
+    d.innerText = opt;
+    d.onclick = () => {
+      if (i === q.a) score++;
       document.getElementById("nextBtn").style.display = "block";
     };
-    container.appendChild(div);
+    optDiv.appendChild(d);
   });
 }
 
 document.getElementById("nextBtn").onclick = () => {
-  current++;
-  if (current < quiz.length) loadQ();
-  else alert("Quiz Over! Score: " + score);
+  index++;
+  if (index < quizData.length) {
+    loadQ();
+  } else {
+    document.getElementById("question").innerText = "Quiz Finished 🎉";
+    document.getElementById("options").innerHTML = "";
+    document.getElementById("score").innerText =
+      `Score: ${score}/${quizData.length}`;
+  }
 };
-
-loadQ();
