@@ -2,32 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Miden Quiz App</title>
+  <title>Miden Quiz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="logo">MidenQuiz</div>
-    <button class="btn nav-btn">Play Quiz</button>
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="logo">Miden</div>
+  <nav>
+    <a href="#">Testnet</a>
+    <a href="#">Publications</a>
+    <a href="#">Roadmap</a>
+    <a href="#">Ecosystem</a>
+    <a href="#">Developers</a>
+    <a href="#">About</a>
   </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>🔥 Miden Quiz Game</h1>
-    <p>Learn about Miden while you play!</p>
-    <button class="btn hero-btn">Start Quiz</button>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <h1>Practical privacy for the future of finance</h1>
+  <p>
+    Miden is the programmable privacy network for the next generation of compliant finance.
+  </p>
 
-  <!-- Quiz Container -->
-  <section class="quiz-container hidden">
-    <div id="progress"></div>
-    <p id="question"></p>
-    <div id="options"></div>
-    <button id="nextBtn" class="btn">Next</button>
-  </section>
+  <div class="features">
+    <div>
+      <h3>Customizable Privacy</h3>
+      <p>Choice between public and private transactions.</p>
+    </div>
+    <div>
+      <h3>Quantum Secure</h3>
+      <p>Built with post-quantum cryptography.</p>
+    </div>
+    <div>
+      <h3>Regulation Ready</h3>
+      <p>Designed for future regulatory clarity.</p>
+    </div>
+  </div>
 
-  <script src="script.js"></script>
+  <!-- START QUIZ BUTTON -->
+  <button class="start-btn" onclick="startQuiz()">START QUIZ →</button>
+</section>
+
+<!-- INVESTORS -->
+<section class="investors">
+  <h2>Our investors</h2>
+  <div class="grid">
+    <div>a16z crypto</div>
+    <div>1kx</div>
+    <div>Hack VC</div>
+    <div>Finality</div>
+    <div>Symbolic</div>
+    <div>Delta</div>
+    <div>Maven11</div>
+    <div>P2 Ventures</div>
+  </div>
+</section>
+
+<!-- QUIZ SECTION -->
+<section class="quiz hidden" id="quiz">
+  <h2>Miden Quiz</h2>
+  <p id="question"></p>
+  <div id="options"></div>
+  <button id="nextBtn">Next</button>
+  <p id="score"></p>
+</section>
+
+<footer class="footer">
+  <p>© 2026 Miden Quiz · Community Project</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
