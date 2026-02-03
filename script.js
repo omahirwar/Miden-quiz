@@ -1,56 +1,58 @@
 const quizData = [
-  {
-    q: "Miden ka main focus kya hai?",
-    o: ["Gaming", "Privacy & Scalability", "NFTs", "Ads"],
-    a: 1
-  },
-  {
-    q: "Miden kis ecosystem se spin-out hua?",
-    o: ["Ethereum", "Polygon", "Solana", "Avalanche"],
-    a: 1
-  },
-  {
-    q: "Miden me execution kahan hoti hai?",
-    o: ["On-chain", "Client-side", "Validator", "Server"],
-    a: 1
-  }
+  { q: "What is Miden focused on?", o: ["Gaming", "Privacy & Scalability", "NFTs", "Ads"], a: 1 },
+  { q: "Miden is a spin-off from?", o: ["Ethereum", "Polygon Labs", "Solana", "Avalanche"], a: 1 },
+  { q: "Which tech enables privacy in Miden?", o: ["Oracles", "ZK Proofs", "Sidechains", "Bridges"], a: 1 },
+  { q: "Where does execution happen?", o: ["On-chain", "Client-side", "Server", "Validator"], a: 1 },
+  { q: "Which transactions does Miden support?", o: ["Public only", "Private only", "Both", "None"], a: 2 },
+  { q: "Who invested in Miden?", o: ["FTX", "a16z crypto", "Coinbase", "Binance"], a: 1 },
+  { q: "What does client-side execution improve?", o: ["Fees", "Privacy & scale", "Centralization", "Latency"], a: 1 },
+  { q: "Why is testnet participation important?", o: ["Fun", "Airdrop rewards", "Ads", "Spam"], a: 1 },
+  { q: "What matters most for rewards?", o: ["Bots", "Real usage", "Paid ads", "Volume"], a: 1 },
+  { q: "Miden is building for?", o: ["Gaming", "Compliant finance", "Memes", "Social"], a: 1 }
 ];
 
 let index = 0;
 let score = 0;
 
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const progress = document.getElementById("progress");
+const result = document.getElementById("result");
+
 function startQuiz() {
-  document.getElementById("quiz").classList.remove("hidden");
-  loadQ();
-  window.scrollTo(0, document.body.scrollHeight);
+  quiz.classList.remove("hidden");
+  window.scrollTo({ top: quiz.offsetTop, behavior: "smooth" });
+  load();
 }
 
-function loadQ() {
+function load() {
   const q = quizData[index];
-  document.getElementById("question").innerText = q.q;
-  const optDiv = document.getElementById("options");
-  optDiv.innerHTML = "";
+  progress.innerText = `Question ${index + 1} of ${quizData.length}`;
+  question.innerText = q.q;
+  options.innerHTML = "";
+  nextBtn.classList.add("hidden");
 
   q.o.forEach((opt, i) => {
-    const d = document.createElement("div");
-    d.className = "option";
-    d.innerText = opt;
-    d.onclick = () => {
+    const div = document.createElement("div");
+    div.className = "option";
+    div.innerText = opt;
+    div.onclick = () => {
       if (i === q.a) score++;
-      document.getElementById("nextBtn").style.display = "block";
+      nextBtn.classList.remove("hidden");
     };
-    optDiv.appendChild(d);
+    options.appendChild(div);
   });
 }
 
-document.getElementById("nextBtn").onclick = () => {
+nextBtn.onclick = () => {
   index++;
-  if (index < quizData.length) {
-    loadQ();
-  } else {
-    document.getElementById("question").innerText = "Quiz Finished 🎉";
-    document.getElementById("options").innerHTML = "";
-    document.getElementById("score").innerText =
-      `Score: ${score}/${quizData.length}`;
+  if (index < quizData.length) load();
+  else {
+    question.innerText = "Quiz Completed 🎉";
+    options.innerHTML = "";
+    progress.innerText = "";
+    result.innerText = `Score: ${score} / ${quizData.length}`;
   }
 };
