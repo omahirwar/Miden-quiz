@@ -1,104 +1,106 @@
-.page {
-  max-width: 880px;
-  margin: auto;
-  padding: 80px 20px;
+:root {
+  --orange: #ff6a2c;
+  --black: #0a0a0a;
+  --gray: #666;
 }
 
-.badge {
-  display: inline-block;
-  background: #fff4ee;
-  color: #ff6a2c;
-  padding: 6px 12px;
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-
-.intro {
-  font-size: 18px;
-  color: #444;
-  max-width: 700px;
-}
-
-.stats {
-  display: flex;
-  gap: 40px;
-  margin: 40px 0;
-}
-.stats span {
-  font-size: 28px;
-  font-weight: bold;
-  color: #ff6a2c;
-}
-.stats p {
+body {
   margin: 0;
-  color: #666;
-}
-
-.clean-list {
-  list-style: none;
-  padding: 0;
-}
-.clean-list li {
-  padding-left: 20px;
-  position: relative;
-  margin-bottom: 10px;
-}
-.clean-list li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #ff6a2c;
-}
-
-.note {
-  background: #fafafa;
-  border-left: 4px solid #ff6a2c;
-  padding: 16px;
-  margin-top: 20px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-.cards div {
-  border: 1px solid #eee;
-  padding: 20px;
+  font-family: Inter, Arial, sans-serif;
   background: #fff;
-}
-
-.emphasis {
-  font-weight: 600;
-  margin-top: 20px;
-}
-
-.steps li {
-  margin-bottom: 16px;
-}
-
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-.links-grid a {
-  padding: 14px;
-  border: 1px solid #ddd;
-  text-decoration: none;
   color: #000;
 }
 
-.muted {
-  color: #666;
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  border-bottom: 1px solid #eee;
+}
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+}
+.logo {
+  font-weight: bold;
+  color: var(--orange);
 }
 
-.cta {
-  display: inline-block;
-  margin-top: 24px;
-  padding: 14px 28px;
-  background: #ff6a2c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
+/* HERO */
+.hero {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+}
+.hero h1 {
+  font-size: 48px;
+}
+.hero p {
+  color: var(--gray);
+  max-width: 600px;
+}
+
+.features {
+  margin-top: 40px;
+}
+.features div {
+  margin-bottom: 20px;
+}
+.features h3 {
+  color: var(--orange);
+}
+
+/* BUTTON */
+.start-btn {
+  margin-top: 40px;
+  background: none;
+  border: none;
+  color: var(--orange);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* INVESTORS */
+.investors {
+  padding: 60px;
+  border-top: 1px solid #eee;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.grid div {
+  border: 1px solid #ddd;
+  padding: 30px;
+  text-align: center;
+}
+
+/* QUIZ */
+.quiz {
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.option {
+  border: 1px solid #ddd;
+  padding: 12px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.option:hover {
+  background: #f7f7f7;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #eee;
 }
