@@ -1,63 +1,47 @@
+const heroBtn = document.querySelector(".hero-btn");
+const quizSec = document.querySelector(".quiz-container");
+
+heroBtn.onclick = () => {
+  quizSec.classList.remove("hidden");
+};
+
 const quiz = [
   {
     question: "Miden ka main focus kya hai?",
-    options: ["Gaming", "Privacy & Scalability", "NFTs", "Memes"],
-    answer: 1
+    options: ["Privacy", "NFT", "Gaming", "Ads"],
+    answer: 0
   },
   {
-    question: "Miden kis ecosystem se spin-out hua?",
-    options: ["Solana", "Ethereum", "Polygon", "Avalanche"],
-    answer: 2
-  },
-  {
-    question: "Miden me execution kahan hoti hai?",
-    options: ["On-chain", "Validator node", "Client-side", "Server"],
-    answer: 2
+    question: "Miden kaha se spin-out hua?",
+    options: ["Polygon", "Solana", "Cardano", "Avalanche"],
+    answer: 0
   }
 ];
 
 let current = 0;
 let score = 0;
 
-const questionEl = document.getElementById("question");
-const optionsEl = document.getElementById("options");
-const nextBtn = document.getElementById("nextBtn");
-const scoreEl = document.getElementById("score");
-
-function loadQuestion() {
-  optionsEl.innerHTML = "";
-  scoreEl.innerText = "";
-
-  const q = quiz[current];
-  questionEl.innerText = q.question;
-
-  q.options.forEach((opt, index) => {
+function loadQ() {
+  document.getElementById("question").innerText = quiz[current].question;
+  const opts = quiz[current].options;
+  const container = document.getElementById("options");
+  container.innerHTML = "";
+  opts.forEach((o, i) => {
     const div = document.createElement("div");
     div.classList.add("option");
-    div.innerText = opt;
-    div.onclick = () => checkAnswer(index);
-    optionsEl.appendChild(div);
+    div.innerText = o;
+    div.onclick = () => {
+      if (i === quiz[current].answer) score++;
+      document.getElementById("nextBtn").style.display = "block";
+    };
+    container.appendChild(div);
   });
 }
 
-function checkAnswer(index) {
-  if (index === quiz[current].answer) {
-    score++;
-  }
-  nextBtn.style.display = "block";
-}
-
-nextBtn.onclick = () => {
+document.getElementById("nextBtn").onclick = () => {
   current++;
-  nextBtn.style.display = "none";
-
-  if (current < quiz.length) {
-    loadQuestion();
-  } else {
-    questionEl.innerText = "🎉 Quiz Finished!";
-    optionsEl.innerHTML = "";
-    scoreEl.innerText = `Your Score: ${score} / ${quiz.length}`;
-  }
+  if (current < quiz.length) loadQ();
+  else alert("Quiz Over! Score: " + score);
 };
 
-loadQuestion();
+loadQ();
