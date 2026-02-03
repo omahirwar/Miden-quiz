@@ -2,20 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Miden Quiz Game</title>
+  <title>Miden Quiz App</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="quiz-container">
-    <h1>🔥 Miden Quiz Wars 🔥</h1>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">MidenQuiz</div>
+    <button class="btn nav-btn">Play Quiz</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>🔥 Miden Quiz Game</h1>
+    <p>Learn about Miden while you play!</p>
+    <button class="btn hero-btn">Start Quiz</button>
+  </section>
+
+  <!-- Quiz Container -->
+  <section class="quiz-container hidden">
+    <div id="progress"></div>
     <p id="question"></p>
-
     <div id="options"></div>
-
-    <button id="nextBtn">Next</button>
-    <p id="score"></p>
-  </div>
+    <button id="nextBtn" class="btn">Next</button>
+  </section>
 
   <script src="script.js"></script>
 </body>
