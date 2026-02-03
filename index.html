@@ -7,17 +7,14 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <header class="nav">
   <div class="logo">Miden</div>
   <nav>
-  <a href="testnet.html">Testnet</a>
-  <a href="#">About</a>
-</nav>
-  
+    <a href="testnet.html">Testnet</a>
+    <a href="#">About</a>
+  </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Practical privacy for the future of finance</h1>
   <p>
@@ -39,11 +36,9 @@
     </div>
   </div>
 
-  <!-- START QUIZ BUTTON -->
   <button class="start-btn" onclick="startQuiz()">START QUIZ →</button>
 </section>
 
-<!-- INVESTORS -->
 <section class="investors">
   <h2>Our investors</h2>
   <div class="grid">
@@ -57,3 +52,19 @@
     <div>P2 Ventures</div>
   </div>
 </section>
+
+<!-- QUIZ -->
+<section class="quiz hidden" id="quiz">
+  <div class="quiz-card">
+    <h2>Miden Quiz</h2>
+    <p id="progress"></p>
+    <p id="question"></p>
+    <div id="options"></div>
+    <button id="nextBtn" class="quiz-btn hidden">Next</button>
+    <p id="result"></p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
